@@ -6,11 +6,9 @@ CONFIGURATION
 
 Configuration := IMMUTABLE
 
-CurrentMaster.Repository
-
-CurrentMaster.Branch
-
-CurrentMaster.Path
+CurrentMaster.Repository := morgul-tech/Cerebro-Source-1.0
+CurrentMaster.Branch := main
+CurrentMaster.Path := cerebro.yaml
 
 ------------------------------------------------------------
 BOOTSTRAP STATE
