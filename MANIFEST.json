@@ -1,0 +1,79 @@
+﻿{
+    "schema":  "p1464-c888-new-boot-producer-candidate/v1",
+    "result":  "HOLD_AUTH",
+    "artifact_state":  "ISOLATED_PATCH_ARTIFACT_READY_DISABLED",
+    "claim":  "C888",
+    "packet":  "P1464",
+    "version":  "0.1-candidate",
+    "base":  {
+                 "boot_repo":  "morgul-tech/B",
+                 "boot_revision":  "936d34ba26a6f3b4ec797120bfbf3cefb6ff6ccb",
+                 "bootengine_blob":  "d73d513793e186c989606da97a09514bfaee9a00",
+                 "cerebro_source_revision":  "8c503cda639838d44f29dd6e555fed7dc6e0e2ee"
+             },
+    "current_lineage":  {
+                            "verified_active_new_boot":  false,
+                            "issuer_signer_scope":  "UNBOUND_HOLD_AUTH",
+                            "latest_exact_historical_session":  "01a0e200-f0ce-7492-8247-972c76d46687",
+                            "latest_exact_historical_attempt":  "BOOT-FULL-WORKER-20260927-9F0A0D36",
+                            "latest_exact_historical_generation":  "NOT_CREATED",
+                            "replay_allowed":  false
+                        },
+    "files":  {
+                  "BootEngine":  {
+                                     "sha256":  "86566573601d726d45f05f9300e51c8b64a5d5523d6c8c310a5a8e35758d7f8f",
+                                     "bytes":  3480
+                                 },
+                  "new_boot_event_producer.py":  {
+                                                     "sha256":  "9490b3ad9862a251b11f3b65ec20376b474e6cf23d1e9be24e6b77618d0aea72",
+                                                     "bytes":  7212
+                                                 },
+                  "test_new_boot_event_producer.py":  {
+                                                          "sha256":  "505a1255c9145694bd3b0be8328d60e7198df5613b48fc0af0b70a0456dc5fc4",
+                                                          "bytes":  6382
+                                                      },
+                  "INTEGRATION_PLAN.md":  {
+                                              "sha256":  "39d6b1c6974a342b2c0d3f057078c0d710437592ccb3e053210de70e82728f0b",
+                                              "bytes":  2168
+                                          },
+                  "TEST_RESULTS.json":  {
+                                            "sha256":  "ecf04c050cef4636881ac677cc383e48d7eba9ce64c48fda6d61fafb683c3429",
+                                            "bytes":  413
+                                        }
+              },
+    "tests":  {
+                  "result":  "PASS",
+                  "passed":  11,
+                  "total":  11,
+                  "cases":  [
+                                "default_hold_auth",
+                                "no_verifier_hold_auth",
+                                "unauthenticated_issuer",
+                                "wrong_attempt",
+                                "wrong_generation",
+                                "stale_currentness",
+                                "broad_scope",
+                                "historical_not_created_generation",
+                                "synthetic_positive_test_only",
+                                "exact_duplicate_idempotent",
+                                "changed_same_lineage_conflict"
+                            ]
+              },
+    "authority":  {
+                      "live_authority_claimed":  false,
+                      "required_scope":  "boot:new_boot:emit",
+                      "default":  "HOLD_AUTH",
+                      "first_missing_edge":  "VERIFIED_CURRENT_NEW_BOOT_ISSUER_SIGNER_SCOPE_AND_PRODUCTION_REPLAY_CUSTODY_UNBOUND",
+                      "human_delegation_ne_live_authority":  true
+                  },
+    "effects":  {
+                    "canonical_merge":  false,
+                    "deploy":  false,
+                    "context_state":  false,
+                    "boot_attempt":  false,
+                    "ready":  false,
+                    "replay":  false,
+                    "credentials":  false
+                },
+    "way_home":  "Protected Boot event authority owner binds exact issuer/signer/scope+current lineage and verified existing replay/custody adapter -\u003e distinct C890 oracle checks exact artifact -\u003e only then separate canonical integration/deploy/readback/fresh canary gates."
+}
