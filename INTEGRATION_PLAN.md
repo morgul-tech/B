@@ -1,29 +1,36 @@
-# P1464/C888 NEW_BOOT producer candidate — integration plan
+# P1473/C897 Human-gated Boot attempt receipt — review plan
 
-Status: isolated candidate only; production authority remains HOLD_AUTH.
+Status: isolated passive-capture candidate. Human remains the only Boot attempt initiator.
 
-Pinned Boot-owned source:
-- repository: morgul-tech/B
-- revision: 936d34ba26a6f3b4ec797120bfbf3cefb6ff6ccb
-- BootEngine blob: d73d513793e186c989606da97a09514bfaee9a00
-- authoritative Cerebro Source: morgul-tech/Cerebro-Source-1.0@8c503cda639838d44f29dd6e555fed7dc6e0e2ee
+## Authoritative Human gate
+- Human action: `@google drive boot worker`
+- Canonical trigger: `BOOT FULL WORKER`
+- BootFull provider: `1ImzuaW0XL444L31wpLx5YYGwX6BNXYUIRZ_A-YV387U`
+- Version: 1.9
+- SHA256: `11915cc2e3bd0cb3ea54d0d47995ccf1ad90068767b91de77d40d517ea82dd12`
+- BootEngine is not the initiator and may not autonomously mint an attempt.
 
-Current lineage boundary:
-- no verified active NEW_BOOT attempt/generation exists.
-- latest exact X7 failure is historical only:
-  session 01a0e200-f0ce-7492-8247-972c76d46687
-  attempt BOOT-FULL-WORKER-20260927-9F0A0D36
-  generation NOT_CREATED
-- that lineage is rejected and must not be replayed.
+## Behavior-real validation
+C897 was validated against one current Human-gated Worker attempt and its provider-readback terminal receipt. Exact thread, turn, message, attempt and Drive receipt identifiers remain in the private PM provider evidence and are intentionally not copied into this public review branch.
 
-Minimum production integration, only after protected authority decision:
-1. Keep producer in the Boot-owned path; do not move event truth into Context.
-2. Bind it only after the lawful Boot lineage owner has minted exact current session_id, attempt_id, generation_id and currentness revision.
-3. Supply an authenticated authority_verifier from the verified Boot event authority owner. It must verify attributable issuer, signer, exact scope boot:new_boot:emit, authority revision and exact lineage/source binding. Caller-provided strings are insufficient.
-4. Reuse a verified existing Boot-owned attempt/receipt custody boundary for replay reservation; the candidate JsonReplayJournal is test-only and is not a production custody claim. If no lawful existing replay/custody adapter is verified, remain HOLD_AUTH/HOLD_SOURCE rather than invent a store.
-5. Emit NEW_BOOT only after authority + currentness + replay reservation succeed. Duplicate exact lineage is idempotent no-op; conflicting lineage/event is HOLD.
-6. Context may consume only the verified event interface; this candidate does not initialize Context state.
-7. Distinct verifier applies frozen C890 oracle before any canonical merge/deploy.
-8. Only after protected owner authority, distinct verification and behavior-real readback may PM consider a separate fresh Boot canary.
+The live attempt terminated fail-closed before generation/READY. The shared-link mapping was not used as evidence.
 
-No canonical merge/deploy, Context mutation, Boot run, READY, credentials, or replay is authorized by this artifact.
+## Passive capture model
+1. Capture the machine-readable Human `UserMessage` event only.
+2. At gate time, record thread/turn/event/raw trigger; attempt_id remains null and generation is `NOT_CREATED_AT_GATE`.
+3. Never generate an attempt ID, NEW_BOOT event, signer, or authority.
+4. Bind an attempt only when a same-thread/same-turn allocation observation is corroborated by an authoritative Boot terminal receipt with the exact same attempt ID and trigger.
+5. One Human event binds at most one attempt; one attempt binds at most one Human event.
+6. Exact duplicate binding is idempotent. Changed/reused identity is HOLD.
+7. Missing gate event => `HOLD_GATE_SENSOR`.
+8. Wrong thread/turn or temporal order => `HOLD_STALE`.
+9. Terminal mismatch => `HOLD_TERMINAL`.
+10. Prior failed receipts are immutable and cannot become fresh Human-gate evidence.
+
+## Production seam
+The observed machine-readable sensor family is the local Codex session journal's Human UserMessage plus a same-turn attempt-allocation event, reconciled to provider-readback `Shared/BOOT_REPORTS`.
+
+A production adapter must be read-only against the live worker path, expose stable event/thread/turn/time identity, never write the worker conversation, never trigger Boot, and fail closed if the gate event or attempt allocation is unavailable. No new service/store is introduced here; the JSON journal in tests is custody modeling only.
+
+## Non-effects
+No merge, deploy, Boot trigger, retry, NEW_BOOT emission, READY inference, Context mutation, or failed-receipt rewrite is authorized by this branch.
