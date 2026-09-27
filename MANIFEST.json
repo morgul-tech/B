@@ -1,79 +1,65 @@
-{
-  "schema": "p1464-c888-new-boot-producer-candidate/v1",
-  "result": "HOLD_AUTH",
-  "artifact_state": "ISOLATED_PATCH_ARTIFACT_READY_DISABLED",
-  "claim": "C888",
-  "packet": "P1464",
-  "version": "0.1-candidate",
-  "base": {
-    "boot_repo": "morgul-tech/B",
-    "boot_revision": "936d34ba26a6f3b4ec797120bfbf3cefb6ff6ccb",
-    "bootengine_blob": "d73d513793e186c989606da97a09514bfaee9a00",
-    "cerebro_source_revision": "8c503cda639838d44f29dd6e555fed7dc6e0e2ee"
-  },
-  "current_lineage": {
-    "verified_active_new_boot": false,
-    "issuer_signer_scope": "UNBOUND_HOLD_AUTH",
-    "latest_exact_historical_session": "01a0e200-f0ce-7492-8247-972c76d46687",
-    "latest_exact_historical_attempt": "BOOT-FULL-WORKER-20260927-9F0A0D36",
-    "latest_exact_historical_generation": "NOT_CREATED",
-    "replay_allowed": false
-  },
-  "files": {
-    "BootEngine": {
-      "sha256": "86566573601d726d45f05f9300e51c8b64a5d5523d6c8c310a5a8e35758d7f8f",
-      "bytes": 3480
-    },
-    "new_boot_event_producer.py": {
-      "sha256": "e116a11c144949e748907d05434af5b8401f33abadecdbc83df79200b0502298",
-      "bytes": 7398
-    },
-    "test_new_boot_event_producer.py": {
-      "sha256": "ab0dcad127be45bdb251556fca7689fa74352a2e30b3bcef52fdb67d20d54d0c",
-      "bytes": 6551
-    },
-    "INTEGRATION_PLAN.md": {
-      "sha256": "0942081f4d2345ba2b56aea245c35f9c71324ff4e47831b634856068845fe922",
-      "bytes": 2195
-    },
-    "TEST_RESULTS.json": {
-      "sha256": "2735e01afbfb00d28b73b275d43b3b5235aaf3ce2f699bd3935ed586b8906eb8",
-      "bytes": 411
-    }
-  },
-  "tests": {
-    "result": "PASS",
-    "passed": 11,
-    "total": 11,
-    "cases": [
-      "default_hold_auth",
-      "no_verifier_hold_auth",
-      "unauthenticated_issuer",
-      "wrong_attempt",
-      "wrong_generation",
-      "stale_currentness",
-      "broad_scope",
-      "historical_not_created_generation",
-      "synthetic_positive_test_only",
-      "exact_duplicate_idempotent",
-      "changed_same_lineage_conflict"
-    ]
-  },
-  "authority": {
-    "live_authority_claimed": false,
-    "required_scope": "boot:new_boot:emit",
-    "default": "HOLD_AUTH",
-    "first_missing_edge": "VERIFIED_CURRENT_NEW_BOOT_ISSUER_SIGNER_SCOPE_AND_PRODUCTION_REPLAY_CUSTODY_UNBOUND",
-    "human_delegation_ne_live_authority": true
-  },
-  "effects": {
-    "canonical_merge": false,
-    "deploy": false,
-    "context_state": false,
-    "boot_attempt": false,
-    "ready": false,
-    "replay": false,
-    "credentials": false
-  },
-  "way_home": "Protected Boot event authority owner binds exact issuer/signer/scope+current lineage and verified existing replay/custody adapter -> distinct C890 oracle checks exact artifact -> only then separate canonical integration/deploy/readback/fresh canary gates."
+﻿{
+    "schema":  "p1473-c897-human-gate-passive-capture/v1",
+    "result":  "PATCH_READY_PASSIVE_CAPTURE",
+    "claim":  "C897",
+    "packet":  "P1473",
+    "version":  "0.2-candidate",
+    "base":  {
+                 "repo":  "morgul-tech/B",
+                 "main":  "936d34ba26a6f3b4ec797120bfbf3cefb6ff6ccb",
+                 "prior_pr_head":  "71ec4af0dac9dd6e229a702ef45c9e3b96406b22",
+                 "pr":  1
+             },
+    "semantics":  {
+                      "attempt_creator":  "HUMAN",
+                      "boot_engine_initiator":  false,
+                      "autonomous_attempt_minting":  false,
+                      "new_boot_event_emission":  false,
+                      "gate_sensor":  "Codex session journal UserMessage + same-turn attempt allocation",
+                      "terminal_authority":  "provider-readback Shared/BOOT_REPORTS",
+                      "missing_sensor":  "HOLD_GATE_SENSOR",
+                      "generation_at_gate":  "NOT_CREATED_AT_GATE",
+                      "one_gate_one_attempt":  true,
+                      "replay":  "DENY_CHANGED_OR_CROSS_EVENT;EXACT_DUPLICATE_IDEMPOTENT"
+                  },
+    "validation":  {
+                       "public_tests":  "11_OF_11_PASS",
+                       "private_behavior_real_live_binding":  "PASS",
+                       "live_fixture_ids_committed":  false,
+                       "failed_x7_mutated":  false,
+                       "share_link_mapping_used":  false
+                   },
+    "files":  {
+                  "human_gate_attempt_receipt.py":  {
+                                                        "sha256":  "3b6db8de6015f7099ad91c1520f672d27feafcc5c5d8deaf4c404311839de43e",
+                                                        "bytes":  11064
+                                                    },
+                  "test_human_gate_attempt_receipt.py":  {
+                                                             "sha256":  "d0c08731a0c8118e47302792b8dfde7a046b0e4a0b2fe961789bb4306e575cfc",
+                                                             "bytes":  9025
+                                                         },
+                  "INTEGRATION_PLAN.md":  {
+                                              "sha256":  "12cb265fd1dea39979d9cb707125e8a3f45f8077343e57a8d650f32e4445dc95",
+                                              "bytes":  2504
+                                          },
+                  "TEST_RESULTS.json":  {
+                                            "sha256":  "00947c5da0da02b398544542c181c16020ea1edff32a4361ae4f09af28fc28c1",
+                                            "bytes":  999
+                                        }
+              },
+    "forbidden_generator_scan":  {
+                                     "uuid":  false,
+                                     "secrets":  false,
+                                     "newguid":  false,
+                                     "new_boot_event":  false,
+                                     "token_supplier":  false
+                                 },
+    "limitations":  {
+                        "production_session_event_adapter_deployed":  false,
+                        "merge":  false,
+                        "deploy":  false,
+                        "boot_trigger":  false,
+                        "ready_inferred":  false
+                    },
+    "way_home":  "Review draft PR -\u003e distinct C899 verification -\u003e production read-only gate sensor adapter + provider receipt reconciliation -\u003e separate merge/deploy gate; Human remains sole Boot attempt initiator."
 }
