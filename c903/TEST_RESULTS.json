@@ -1,0 +1,28 @@
+{
+  "schema": "cerebro.c903.step03-consumer-repair-tests/v1",
+  "base_tested_revision": "22482c4369488bdc18a0530329300dd486f423e7",
+  "test_runner": "python -m unittest discover -s c903 -p test_step03_consumption_evidence.py -v",
+  "pass_count": 9,
+  "total": 9,
+  "all_pass": true,
+  "live_boot_pass": false,
+  "cases": [
+    "compiler_membership_is_not_consumption",
+    "positive_genuine_consumer_evidence",
+    "missing_or_skipped_semantics_fail_closed",
+    "false_consumption_from_manifest_or_assertion_fails",
+    "stale_snapshot_or_revision_fails",
+    "contradictory_supersession_fails",
+    "wrong_unbound_scope_fails",
+    "duplicate_overlay_rows_fail",
+    "unknown_applicability_blocks"
+  ],
+  "current_snapshot_probe": {
+    "populated": 165,
+    "active": 157,
+    "snapshot_sha256": "dbb166e168bc25f2a8575df0af7c0e826b562cd07c60fb153018d575ad940c30",
+    "required_active_count": 157,
+    "consumption_status": "NOT_EXECUTED",
+    "consumed_ids": []
+  }
+}
