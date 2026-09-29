@@ -1,0 +1,12 @@
+{
+  "schema": "cerebro.c906.step03-live-callsite-audit/v1",
+  "result": "HOLD_OWNER",
+  "c903_contract_commit": "0395ccda4661393e8df60e8b83d6849d382566f2",
+  "isolated_test_command": "python -m unittest discover -s c903 -p test_step03_consumption_evidence.py -v",
+  "isolated_tests_passed": 9,
+  "isolated_tests_total": 9,
+  "live_step03_consumer_invocations_observed": 0,
+  "live_boot_pass": false,
+  "failed_receipt_immutable": "1_ZHgxP-QPUWRvRMvgdfHOiYKH4APKPFF",
+  "first_missing_capability": "BOOTFULL_HUMAN_TRIGGERED_STEP03_CALLABLE_OWNER_AND_INVOKER"
+}
